@@ -58,7 +58,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Not a valid response. Next time try to type a proper response. Have a great day!");
+                        Console.WriteLine("Not a valid response. Next time please try to type a proper response. Have a great day!");
                     }
                 }
             }

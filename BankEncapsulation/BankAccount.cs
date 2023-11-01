@@ -17,7 +17,22 @@ namespace BankEncapsulation
 
         public double GetBalance()
         {
-           return  balance;
+           return balance;
         }
+
+        public void ExitProgram()
+        {            
+            Console.WriteLine("Do you want to exit the program?");
+            var input = Console.ReadLine();
+            if(input == "y")
+            {
+                Console.WriteLine("exiting");
+            }
+            else 
+            {
+                Console.WriteLine("okay, continue");
+            }
+        }
+
     }
 }

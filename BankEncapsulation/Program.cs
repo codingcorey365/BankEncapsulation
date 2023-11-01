@@ -1,9 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-using System;
-using System.Security.Cryptography.X509Certificates;
-using System.Runtime.InteropServices;
-
-namespace BankEncapsulation
+﻿namespace BankEncapsulation
 {
     //DONE: Create a new public class named BankAccount
     //DONE: In your BankAccount class, create the following:
@@ -20,49 +15,66 @@ namespace BankEncapsulation
 
             BankAccount coreysBankAccount = new BankAccount();
 
-            Console.WriteLine("you are at an atm, would you like to make a deposit?");
+
+
+            Console.WriteLine("You are at an ATM, would you like to make a deposit?");
+
             string? answerToDepositQuestion = Console.ReadLine();
 
             if (answerToDepositQuestion == null || answerToDepositQuestion == "")
             {
-                Console.WriteLine("Not a valid response. next time try to type a proper response.Have a great day!");
+                Console.WriteLine("Not a valid response. Next time try to type a proper response. Have a great day!");
+                
             }
-           
-            if ((answerToDepositQuestion == "yes") || (answerToDepositQuestion == "y"))
+            else if ((answerToDepositQuestion == "no") || (answerToDepositQuestion == "n"))
+            {
+                Console.WriteLine("Okay, maybe next time!");                
+            }
+            else if ((answerToDepositQuestion == "yes") || (answerToDepositQuestion == "y"))
             {
                 Console.WriteLine("Great! Enter in how much you would like to deposit to the account.");
-                double depositAmount = Convert.ToDouble(Console.ReadLine());
+                //double depositAmount = Convert.ToDouble(Console.ReadLine()); do not need
+            }
+            else
+            {
+                Console.WriteLine("go go gadget");
+            }
 
-                if ( depositAmount == "")
-                {
-                    Console.WriteLine("Not a valid response. next time try to type a proper response.Have a great day!");
-                }
+            //-------------------------------------------------------------------------------
 
-                Console.WriteLine("I will now put that amount into your account");
+            if (double.TryParse(Console.ReadLine(), out var depositAmount))
+            {
+                Console.WriteLine("I will now add the deposit amount into your account");
 
                 coreysBankAccount.DepositMethod(depositAmount);
 
-                Console.WriteLine("Would you like to see your new balance?");
-
-
+                Console.WriteLine("Would you like to see your new bank balance?");
                 string? answerToGetBalanceQuestion = Console.ReadLine();
                 if (answerToGetBalanceQuestion == null || answerToGetBalanceQuestion == "")
                 {
-                    Console.WriteLine("Not a valid response. next time try to type a proper response.Have a great day!");
+                    Console.WriteLine("Not a valid response. Next time try to type a proper response. Have a great day!");
+
                 }
-                
-                if ((answerToGetBalanceQuestion == "yes") || (answerToGetBalanceQuestion == "y"))
-                {
-                    Console.WriteLine($"Great! your new balance after depositing ${depositAmount} is");
-                    //enter method
-                    Console.WriteLine(coreysBankAccount.GetBalance());
-                }
-                else
-                {
-                    Console.WriteLine("Have a great day!");
-                }
+                else if ((answerToGetBalanceQuestion == "yes") || (answerToGetBalanceQuestion == "y"))
+                     {
+                         Console.WriteLine($"Understood! Your new balance after depositing ${depositAmount} is ...");
+                         //enter method
+                         Console.WriteLine($"${coreysBankAccount.GetBalance()}");
+                     }
+                else if ((answerToDepositQuestion == "no") || (answerToDepositQuestion == "n"))
+                     {
+                         Console.WriteLine("Okay, maybe next time!");
+                     }
             }
+            else
+            {
+                Console.WriteLine("Not a valid response. Next time try to type a proper response. Have a great day!");
+
+            }
+
             
+
+
         }
     }
 }
